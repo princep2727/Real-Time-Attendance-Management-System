@@ -1,6 +1,8 @@
 from tkinter import *
 from PIL import ImageTk
+import tkinter.messagebox as tm
 from tkinter import messagebox
+
 
 class Login:
     def __init__(self, root):
@@ -31,18 +33,24 @@ class Login:
         forget_btn=Button(Frame_login, cursor="hand2", text="Forget Password?", bg="white", fg="#d77337",bd=0, font=("times new roman", 12)).place(x=90,y=280)
         Login_btn=Button(self.root,command=self.login_function, cursor="hand2", text="Login", fg="white", bg="#d77337", font=("times new roman", 20)).place(x=300, y=470,width=180,height=40)
 
+    
+    def loginSucessfully(self):
+        Main_screen = Toplevel(root)
+        Main_screen.title("Login Sucessfully")
+        Main_screen.geometry("1199x600+100+50")
 
     def login_function(self):
         if self.txt_pass.get()=="" or self.txt_user.get()=="":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
-        elif self.txt_pass.get()!="123456" or self.txt_user.get()!="Madhav":
+        elif self.txt_pass.get()!="123456" or self.txt_user.get()!="madhav":
             messagebox.showerror("Error","Invalid Username/Password",parent=self.root)
         else:
-            self.dashBoard()
-            self.close()
+            tm.showinfo("Login info", "Welcome madhav")
+            self.loginSucessfully()
+            
+        
 
-    def dashBoard(self):
-        Frame_login=Frame(self.root, bg="white")
+    
 
 root=Tk()
 obj=Login(root)
